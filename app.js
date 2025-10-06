@@ -4,20 +4,20 @@ const app = express()
 
 const userRoutes = require('./routes/userRoutes')
 const busRoutes = require('./routes/busRoutes')
-// const bookingRoutes = require('./routes/bookingRoutes')
+const bookingRoutes = require('./routes/bookingRoutes')
 // const paymentRoutes = require('./routes/paymentRoutes')
 
 const userModel = require('./models/users')
 // const paymentModel = require('./models/payments')
 const busModel = require('./models/buses')
 // const bookingModel = require('./models/bookings')
-
+require('./models/index');
 app.use(express.json())
 
 app.use('/user', userRoutes)
 // app.use('/payment', paymentRoutes)
 app.use('/bus', busRoutes)
-// app.use('/booking', bookingRoutes)
+app.use('/booking', bookingRoutes)
 
 db.sync({ force: true })
     .then(() => {
